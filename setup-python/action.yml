@@ -1,10 +1,10 @@
 name: 'Custom Setup Python'
-description: 'Устанавливает Python 3.10 на Ubuntu'
+description: 'Устанавливает Python 3.12 на Ubuntu 24.04'
 runs:
   using: "composite"
   steps:
-    - name: Install Python 3.10
+    - name: Проверка установленного Python
       shell: bash
       run: |
-        sudo apt-get update
-        sudo apt-get install -y python3.10 python3.10-venv python3.10-dev
+        python3 --version
+        which python3
