@@ -6,8 +6,8 @@ runs:
     - name: Проверка установленного Python
       shell: bash
       run: |
-        python3 --version
         which python3
+        sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 1
 
     - name: Установка зависимостей
       shell: bash
