@@ -8,3 +8,17 @@ runs:
       run: |
         python3 --version
         which python3
+
+    - name: Установка зависимостей
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Run tests
+      run: |
+        python -m unittest discover
+
+    - name: Проверка кода на PEP8
+      run: |
+        echo "Проверка кода на PEP8"
+        flake8 app.py        
