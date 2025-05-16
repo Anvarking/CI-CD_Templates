@@ -1,21 +1,22 @@
 name: 'Custom Setup Python'
-description: 'Устанавливает Python 3.12 на Ubuntu 24.04'
+description: 'Запускает тесты и проверку кода в уже готовом контейнере с Python'
+
 runs:
   using: "composite"
   steps:
     - name: Проверка установленного Python
       shell: bash
       run: |
-        python3 --version
-        which python3
+        python --version
+        which python
 
-    - name: Установка зависимостей
+    - name: Установка зависимостей (если нужно)
       shell: bash
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Run tests
+    - name: Запуск тестов
       shell: bash
       run: |
         python -m unittest discover
@@ -24,4 +25,4 @@ runs:
       shell: bash
       run: |
         echo "Проверка кода на PEP8"
-        flake8 app.py        
+        flake8 app.py
