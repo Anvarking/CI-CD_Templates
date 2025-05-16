@@ -12,15 +12,15 @@ runs:
       shell: bash
       run: |
         python3 -m pip install --upgrade pip
-        pip install -r requirements.txt
+        python3 -m pip install -r requirements.txt
 
     - name: Run tests
       shell: bash
       run: |
-        python -m unittest discover
+        python3 -m unittest discover
 
     - name: Проверка кода на PEP8
       shell: bash
       run: |
         echo "Проверка кода на PEP8"
-        flake8 app.py        
+        flake8 app.py
