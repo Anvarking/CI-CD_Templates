@@ -1,0 +1,30 @@
+name: Run Flask App on Self-Hosted Runner
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  flask:
+    runs-on: self-hosted
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          pip3 install -r requirements.txt
+
+      - name: Run Flask app
+        env:
+          FLASK_APP: app.py
+          FLASK_ENV: development
+        run: |
+          nohup flask run --host=0.0.0.0 --port=5000 > flask.log 2>&1 &
